@@ -31,14 +31,28 @@ Derive break-even revenue from the ceiled unit figure (ceiled_units × selling_p
 Display the exact (unrounded) value alongside the ceiled value if useful, e.g.: "Break-even: 1,334 units (exact: 1,333.33)"
 Apply the same ceiling logic to target profit units.
 ---
+
+## Methodologies
+
+**Fixed cost apportionment.** The ACCA article reports ZMW 200,000 in 
+fixed costs for Company A as a whole (not split between products). For 
+a single-product analysis of Product X, I apportioned fixed costs based 
+on contribution share — Product X generates 72.73% of the company's 
+total contribution (ZMW 400,000 of ZMW 550,000), so is allocated 
+ZMW 145,455 of fixed costs. Rationale: products that generate more 
+contribution have greater capacity to absorb fixed costs, making 
+contribution-based apportionment more theoretically sound than 
+unit-based or revenue-based methods for CVP analysis.
+---
 ## Input Format
+
 
 The script should accept a CSV file with the following structure:
 
 
 | Product   | Selling Price(ZMW) | Variable Cost per Unit(ZMW) | Fixed Costs Attributable(ZMW) | Units |
 |-----------|--------------------|-----------------------------|-------------------------------|-------|
-| Product A | 50                 | 30                          | 200000                        | 12000 |
+| Product X | 50                 | 30                          | 145455                        | 20000 |
 
 I will create my own sample CSV using real data from ACCA F5 Technical Article.
 Using company A from the article.
@@ -51,24 +65,24 @@ The script must produce a report printed to the terminal. See the mock-up below 
 ### CVP Report
 ```
 ================================================================
-CVP ANALYSIS — Product A (ACCA F5 Company A Example)
+CVP ANALYSIS — Product X (ACCA F5 Company A, apportioned)
 ================================================================
 Selling Price per Unit            ZMW         50.00
 Variable Cost per Unit            ZMW         30.00
 Contribution per Unit             ZMW         20.00
 Contribution Ratio                            40.00%
 
-Fixed Costs                       ZMW    200,000.00
-Break-Even (Units)                         10,000
-Break-Even (Revenue)              ZMW    500,000.00
+Fixed Costs                       ZMW    145,455.00
+Break-Even (Units)                          7,273
+Break-Even (Revenue)              ZMW    363,650.00
 
-Expected Sales (Units)                     12,000
-Expected Revenue                  ZMW    600,000.00
-Margin of Safety (Units)                    2,000
-Margin of Safety (%)                         16.67%
+Expected Sales (Units)                     20,000
+Expected Revenue                  ZMW  1,000,000.00
+Margin of Safety (Units)                   12,727
+Margin of Safety (%)                         63.64%
 
 Target Profit                     ZMW     50,000.00
-Units to Achieve Target                    12,500
+Units to Achieve Target                     9,773
 ================================================================
 ```
 ## Stretch Goals (only after core works)
@@ -133,7 +147,7 @@ and per-product contribution to break-even. This becomes a separate version (v2)
 * Day 6: Refactor into functions
 * Day 7: Write README
 * Day 8: Implement one stretch goal if time permits
-* Day 9: Buffer
+* Day 9: Buffe
 * Day 10: Polish + push to GitHub
 
 ---
